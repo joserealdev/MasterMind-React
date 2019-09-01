@@ -1,0 +1,44 @@
+.wrapper {
+  display: grid;
+  grid-template-rows: 100vh;
+}
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+.cookieNotification {
+  display: flex;
+  flex-direction: column;
+  height: 100px;
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  text-align: center;
+  background: #f8f9fa;
+  text-align: center;
+  z-index: 9999;
+  align-items: center;
+  justify-content: space-around;
+  border-top: 1px solid #00000057;
+}
+
+.cookieNotification p {
+  max-width: 960px;
+  margin: 0 auto;
+  font-size: 16px;
+  line-height: 1.3em;
+}
+
+button {
+  padding: 10px 25px;
+  color: #fff;
+  background: #000;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 3px;
+  text-shadow: none;
+  border: none;
+  box-shadow: none;
+}
