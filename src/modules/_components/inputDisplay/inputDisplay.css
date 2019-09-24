@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  justify-content: center;
+  ul {
+    display: flex;
+    li {
+      list-style: none;
+      margin: 0 5px;
+      .input {
+        text-align: center;
+        width: 2em;
+        -webkit-border-radius: 4;
+        -moz-border-radius: 4;
+        border-radius: 4px;
+        font-family: Arial;
+        color: #000000;
+        background: rgb(88, 255, 199);
+        padding: 5px;
+        border: solid rgb(31, 202, 145) 1px;
+        text-decoration: none;
+      }
+    }
+  }
+  ul, li {
+    margin: 0;
+    padding: 0;
+  }
+}
