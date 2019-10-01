@@ -5,7 +5,8 @@ import React from 'react'
 const Input = ({
   className,
   isDisabled,
-  isHidden
+  isHidden,
+  value
 }) => {
   const button = (
     <input
@@ -13,6 +14,7 @@ const Input = ({
       disabled={ isDisabled }
       hidden={ isHidden }
       type="text"
+      value={ value }
     />
   )
   return button

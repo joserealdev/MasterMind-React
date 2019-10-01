@@ -1,5 +1,9 @@
 // Libs
 import React from 'react'
+import classNames from 'classnames/bind'
+import styles from './button.css'
+
+const cx = classNames.bind(styles)
 
 /** Button component description. */
 const Button = ({
@@ -9,6 +13,13 @@ const Button = ({
   onClick,
   text
 }) => {
+  const btnStyle = classNames(
+    className,
+    cx({
+      button: true,
+      btnDisabled: isDisabled
+    })
+  )
   let spanTag = null
 
   if (text) {
@@ -20,10 +31,10 @@ const Button = ({
   }
   const button = (
     <button
-      className={ className }
+      className={ btnStyle }
       disabled={ isDisabled }
       hidden={ isHidden }
-      onClick={ () => onClick(text) }
+      onClick={ onClick ? () => onClick(text) : null }
       type="button"
     >
       { spanTag }

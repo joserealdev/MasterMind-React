@@ -3,27 +3,22 @@ import Input from 'components/input'
 import styles from './inputDisplay.css'
 
 const InputDisplay = ({
-  inputsToShow
+  inputs
 }) => {
-  const inputs = []
-
-  for (let x = 0; x < inputsToShow; x += 1) {
-    inputs.push(
-      (
-        <li key={ x }>
-          <Input
-            className={ styles.input }
-            isDisabled={ true }
-          />
-        </li>
-      )
-    )
-  }
+  const inputList = inputs.map((inp) => (
+    <li key={ inp.id }>
+      <Input
+        className={ styles.input }
+        isDisabled={ true }
+        value={ inp.text }
+      />
+    </li>
+  ))
 
   return (
     <div className={ styles.container }>
       <ul>
-        { inputs }
+        { inputList }
       </ul>
     </div>
   )

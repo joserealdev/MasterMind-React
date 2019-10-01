@@ -1,3 +1,6 @@
 export default {
-  TITLE: 'MasterMind'
+  TITLE: 'MasterMind',
+  COMBINATION: 'Combination',
+  CORRECTPOSITION: 'Correct position',
+  COINCIDENCE: 'Coincidence'
 }

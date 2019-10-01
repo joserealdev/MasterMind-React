@@ -1,10 +1,16 @@
 .button {
-  border-radius: 26px;
-  padding: 8px 15px;
+  -webkit-border-radius: 4;
+  -moz-border-radius: 4;
+  border-radius: 4px;
+  font-family: Arial;
+  color: #000000;
+  background: rgb(88, 255, 199);
+  padding: 10px 15px;
+  border: solid rgb(31, 202, 145) 1px;
   text-decoration: none;
-  cursor: pointer;
-  outline: 0;
-  border-style: solid;
-  display: inline-flex;
-  align-items: center;
+}
+
+.btnDisabled {
+  background: rgb(179, 185, 184);
+  border: solid rgb(110, 110, 110) 1px;
 }
