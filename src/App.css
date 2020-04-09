@@ -7,3 +7,9 @@
   flex-direction: column;
   overflow-x: hidden;
 }
+
+@media (prefers-color-scheme: dark) {
+  * {
+    color: white;
+  }
+}

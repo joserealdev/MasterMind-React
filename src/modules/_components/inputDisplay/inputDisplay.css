@@ -6,7 +6,7 @@
     display: flex;
     li {
       list-style: none;
-      margin: 0 5px;
+      margin: 0 15px;
       .input {
         text-align: center;
         width: 2em;
@@ -19,11 +19,25 @@
         padding: 5px;
         border: solid rgb(31, 202, 145) 1px;
         text-decoration: none;
+        transform: scale(1.5);
       }
     }
   }
   ul, li {
     margin: 0;
     padding: 0;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .container {
+    ul {
+      li {
+        .input {
+          color: #fff;
+          background: rgb(16, 23, 32);
+        }
+      }
+    }
   }
 }

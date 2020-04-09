@@ -14,3 +14,10 @@
   background: rgb(179, 185, 184);
   border: solid rgb(110, 110, 110) 1px;
 }
+
+@media (prefers-color-scheme: dark) {
+  .button {
+    color: #fff;
+    background: rgb(16, 23, 32);
+  }
+}

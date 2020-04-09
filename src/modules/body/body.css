@@ -1,10 +1,16 @@
 .container {
   background-color: aquamarine;
   margin: 0;
-  min-height: 100%;
   padding: 5%;
+  height: calc(100% - 60px);
   .actionButton {
     display: block;
     margin: 10px auto;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .container {
+    background-color: rgb(16, 23, 32);
   }
 }

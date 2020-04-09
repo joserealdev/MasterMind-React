@@ -3,6 +3,8 @@ import NumberSelector from 'components/numberSelector'
 import InputDisplay from 'components/inputDisplay'
 import Button from 'components/button'
 import MovesTable from 'components/movesTable'
+import { getButtonsValues, getInputValues, getRandomNumbers } from 'commons/helpers/main'
+import LITERALS from 'commons/constants/literals'
 import styles from './body.css'
 
 class Body extends Component {
@@ -10,57 +12,27 @@ class Body extends Component {
     super(props)
 
     this.resetGame = this.resetGame.bind(this)
-    const rndmNumbers = this.getRandomNumbers()
+    const rndmNumbers = getRandomNumbers()
 
     this.state = {
       secretNumber: rndmNumbers,
       isDisabled: false,
-      btnValues: this.getButtonsValues(),
-      inputValues: this.getInputValues(),
+      btnValues: getButtonsValues(),
+      inputValues: getInputValues(),
       moves: [],
       isGameOver: false
     }
   }
-
-  getButtonsValues = () => ([
-    { text: '7' },
-    { text: '8' },
-    { text: '9' },
-    { text: '4' },
-    { text: '5' },
-    { text: '6' },
-    { text: '1' },
-    { text: '2' },
-    { text: '3' },
-    { text: '0' }
-  ])
-
-  getInputValues = () => ([
-    { text: '', id: 'inp0' },
-    { text: '', id: 'inp1' },
-    { text: '', id: 'inp2' },
-    { text: '', id: 'inp3' }
-  ])
 
   resetGame = (rndmNumbers) => {
     this.setState({
       secretNumber: rndmNumbers,
       isDisabled: false,
-      btnValues: this.getButtonsValues(),
-      inputValues: this.getInputValues(),
+      btnValues: getButtonsValues(),
+      inputValues: getInputValues(),
       moves: [],
       isGameOver: false
     })
-  }
-
-  getRandomNumbers = (vMin = 0, vMax = 9) => {
-    const rndmNumbers = []
-    while (rndmNumbers.length < 4) {
-      const num = Math.floor(Math.random() * (vMax - vMin + 1) + vMin)
-      if (rndmNumbers.indexOf(num) === -1) rndmNumbers.push(num)
-    }
-    console.log(rndmNumbers)
-    return rndmNumbers
   }
 
   checkAnswer = () => {
@@ -109,8 +81,8 @@ class Body extends Component {
 
     if (!end) {
       this.setState({
-        btnValues: this.getButtonsValues(),
-        inputValues: this.getInputValues(),
+        btnValues: getButtonsValues(),
+        inputValues: getInputValues(),
         moves,
         isDisabled: false
       })
@@ -144,7 +116,7 @@ class Body extends Component {
   }
 
   playAgain = () => {
-    const rndmNumbers = this.getRandomNumbers()
+    const rndmNumbers = getRandomNumbers()
     this.resetGame(rndmNumbers)
   }
 
@@ -156,6 +128,24 @@ class Body extends Component {
       moves,
       isGameOver
     } = this.state
+
+    const lastMovement = moves[0] ? (
+      <div>
+        {LITERALS.LASTMOVEMENT}
+        <div>
+          {LITERALS.COMBINATION}
+          <span>{moves[0].combination}</span>
+        </div>
+        <div>
+          {LITERALS.CORRECTPOSITION}
+          <span>{moves[0].correctPosition}</span>
+        </div>
+        <div>
+          {LITERALS.COINCIDENCE}
+          <span>{moves[0].coincidence}</span>
+        </div>
+      </div>
+    ) : null
 
     return (
       <div className={ styles.container }>
@@ -171,8 +161,9 @@ class Body extends Component {
           className={ styles.actionButton }
           isDisabled={ inputValues[inputValues.length - 1].text.length === 0 }
           onClick={ isGameOver ? this.playAgain : this.checkAnswer }
-          text={ isGameOver ? 'Play again' : 'Check' }
+          text={ isGameOver ? LITERALS.PLAYAGAIN : LITERALS.CHECK }
         />
+        {lastMovement}
         <MovesTable
           moves={ moves }
         />

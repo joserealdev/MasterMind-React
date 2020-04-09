@@ -4,7 +4,7 @@
   ul {
     display: flex;
     flex-wrap: wrap;
-    width: 50%;
+    width: 70%;
     li {
       display: flex;
       justify-content: center;
@@ -21,6 +21,9 @@
         padding: 10px 15px;
         border: solid rgb(31, 202, 145) 1px;
         text-decoration: none;
+        margin: 10px;
+        height: 100%;
+        width: 100%;
       }
       .btnDisabled {
         background: rgb(179, 185, 184);
@@ -31,5 +34,18 @@
   ul, li {
     margin: 0;
     padding: 0;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .container {
+    ul {
+      li {
+        .btn {
+          color: #fff;
+          background: rgb(16, 23, 32);
+        }
+      }
+    }
   }
 }

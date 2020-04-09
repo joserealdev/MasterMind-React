@@ -1,5 +1,5 @@
 import React from 'react'
-import Input from 'components/input'
+import Input from '../input'
 import styles from './inputDisplay.css'
 
 const InputDisplay = ({

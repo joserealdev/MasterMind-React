@@ -7,10 +7,21 @@
   padding-left: 1%;
   width: 100%;
   font-family: sans-serif;
-  min-height: 48px;
+  min-height: 60px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   .text {
     margin-left: 10px;
+  }
+  .reload {
+    margin-right: 15px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .container {
+    background-color: rgb(3, 11, 22);
+    border-bottom: 1px solid rgb(31, 202, 145);
   }
 }
