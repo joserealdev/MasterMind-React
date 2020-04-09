@@ -10,6 +10,7 @@ const NumberSelector = ({
   const buttons = btnValues.map((btn) => (
     <li key={ btn.text }>
       <Button
+        className={ styles.btn }
         isDisabled={ isDisabled || btn.isDisabled }
         onClick={ onClick }
         text={ btn.text }

@@ -4,7 +4,7 @@
   ul {
     display: flex;
     flex-wrap: wrap;
-    width: 70%;
+    width: 60%;
     li {
       display: flex;
       justify-content: center;
@@ -19,7 +19,6 @@
         color: #000000;
         background: rgb(88, 255, 199);
         padding: 10px 15px;
-        border: solid rgb(31, 202, 145) 1px;
         text-decoration: none;
         margin: 10px;
         height: 100%;

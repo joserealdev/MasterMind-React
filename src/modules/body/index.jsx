@@ -133,15 +133,15 @@ class Body extends Component {
       <div>
         {LITERALS.LASTMOVEMENT}
         <div>
-          {LITERALS.COMBINATION}
+          {`${LITERALS.COMBINATION}: `}
           <span>{moves[0].combination}</span>
         </div>
         <div>
-          {LITERALS.CORRECTPOSITION}
+          {`${LITERALS.CORRECTPOSITION}: `}
           <span>{moves[0].correctPosition}</span>
         </div>
         <div>
-          {LITERALS.COINCIDENCE}
+          {`${LITERALS.COINCIDENCE}: `}
           <span>{moves[0].coincidence}</span>
         </div>
       </div>
