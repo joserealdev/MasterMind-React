@@ -4,17 +4,17 @@
   "description": "It's a classic single player game. In this puzzle game, you will guess four numbers and their position.",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "favicon-1x.ico",
       "type": "image/x-icon",
       "sizes": "48x48"
     },
     {
-      "src": "favicon.ico",
+      "src": "favicon-2x.ico",
       "type": "image/x-icon",
       "sizes": "96x96"
     },
     {
-      "src": "favicon.ico",
+      "src": "favicon-4x.ico",
       "type": "image/x-icon",
       "sizes": "192x192"
     }
