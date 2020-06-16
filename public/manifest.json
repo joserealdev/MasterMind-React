@@ -17,6 +17,11 @@
       "src": "favicon-4x.ico",
       "type": "image/x-icon",
       "sizes": "192x192"
+    },
+    {
+      "src": "favicon-6x.ico",
+      "type": "image/x-icon",
+      "sizes": "512x512"
     }
   ],
   "start_url": "/",
