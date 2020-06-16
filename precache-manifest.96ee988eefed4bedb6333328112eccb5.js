@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "76bf77681b1bb6f06b0f3fa58c7286bc",
+    "revision": "6a457720cb85f08c1a26efce9096c11a",
     "url": "/MasterMind-React/index.html"
   },
   {
-    "revision": "774753dcb3fd3d7dfc81",
+    "revision": "3366646fc9abacbda197",
     "url": "/MasterMind-React/static/css/main.397bde13.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/MasterMind-React/static/js/2.fdfb15d7.chunk.js"
   },
   {
-    "revision": "774753dcb3fd3d7dfc81",
-    "url": "/MasterMind-React/static/js/main.d047767c.chunk.js"
+    "revision": "3366646fc9abacbda197",
+    "url": "/MasterMind-React/static/js/main.377771e4.chunk.js"
   },
   {
     "revision": "4bf0b2ba6762aa4e372e",
