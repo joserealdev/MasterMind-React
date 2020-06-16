@@ -1,0 +1,27 @@
+{
+  "short_name": "MasterMind",
+  "name": "MasterMind game",
+  "description": "It's a classic single player game. In this puzzle game, you will guess four numbers and their position.",
+  "icons": [
+    {
+      "src": "favicon-1x.ico",
+      "type": "image/x-icon",
+      "sizes": "48x48"
+    },
+    {
+      "src": "favicon-2x.ico",
+      "type": "image/x-icon",
+      "sizes": "96x96"
+    },
+    {
+      "src": "favicon-4x.ico",
+      "type": "image/x-icon",
+      "sizes": "192x192"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff",
+  "orientation": "portrait"
+}
