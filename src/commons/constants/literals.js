@@ -1,8 +1,8 @@
 export default {
   TITLE: 'MasterMind',
-  COMBINATION: 'Combinación',
-  CORRECTPOSITION: 'Posición correcta',
-  COINCIDENCE: 'Coincidencias',
+  COMBINATION: 'Combinación: ',
+  CORRECTPOSITION: 'Posición correcta: ',
+  COINCIDENCE: 'Coincidencias: ',
   LASTMOVEMENT: 'Último movimiento',
   SHOWMOVEMENTS: 'Ver movimientos',
   HIDEMOVEMENTS: 'Ocultar movimientos',

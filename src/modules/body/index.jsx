@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import NumberSelector from 'components/numberSelector'
 import InputDisplay from 'components/inputDisplay'
 import Button from 'components/button'
 import MovesTable from 'components/movesTable'
-import { getButtonsValues, getInputValues, getRandomNumbers } from 'commons/helpers/main'
+import Loading from 'components/loading'
 import LITERALS from 'commons/constants/literals'
+import { getButtonsValues, getInputValues } from 'commons/helpers/main'
+import * as actions from 'store/actions/game'
 import styles from './body.css'
 
 class Body extends Component {
@@ -12,38 +15,24 @@ class Body extends Component {
     super(props)
 
     this.resetGame = this.resetGame.bind(this)
-    const rndmNumbers = getRandomNumbers()
-
-    this.state = {
-      secretNumber: rndmNumbers,
-      isDisabled: false,
-      btnValues: getButtonsValues(),
-      inputValues: getInputValues(),
-      moves: [],
-      isGameOver: false
-    }
   }
 
-  resetGame = (rndmNumbers) => {
-    this.setState({
-      secretNumber: rndmNumbers,
-      isDisabled: false,
-      btnValues: getButtonsValues(),
-      inputValues: getInputValues(),
-      moves: [],
-      isGameOver: false
-    })
+  componentDidMount() {
+    const { onInitGame } = this.props
+    onInitGame()
+  }
+
+  resetGame = () => {
+    const { onInitGame } = this.props
+    onInitGame()
   }
 
   checkAnswer = () => {
     const {
-      inputValues,
-      secretNumber,
-      moves
-    } = this.state
+      inputValues, moves, secretNumber, setClickHandler
+    } = this.props
 
     const hitsbin = []
-    let end = false
     const move = inputValues.map((value) => value.text).join('')
     let correct = 0
     let coinc = 0
@@ -54,6 +43,7 @@ class Body extends Component {
         hitsbin[i] = 1
       }
     })
+    const end = correct === secretNumber.length
 
     if (correct < secretNumber.length) {
       secretNumber.forEach((number, i) => {
@@ -68,8 +58,6 @@ class Body extends Component {
           }
         }
       })
-    } else {
-      end = true
     }
 
     moves.unshift({
@@ -80,21 +68,21 @@ class Body extends Component {
     })
 
     if (!end) {
-      this.setState({
+      setClickHandler({
         btnValues: getButtonsValues(),
         inputValues: getInputValues(),
         moves,
         isDisabled: false
       })
     } else {
-      this.setState({
+      setClickHandler({
         isGameOver: true
       })
     }
   }
 
   clickHandler = (val) => {
-    const { btnValues, inputValues } = this.state
+    const { btnValues, inputValues, setClickHandler } = this.props
 
     for (let x = 0; x < btnValues.length; x += 1) {
       if (btnValues[x].text === val) {
@@ -108,16 +96,12 @@ class Body extends Component {
         break
       }
     }
-    this.setState({
+
+    setClickHandler({
       btnValues,
       inputValues,
       isDisabled: inputValues[inputValues.length - 1].text.length > 0
     })
-  }
-
-  playAgain = () => {
-    const rndmNumbers = getRandomNumbers()
-    this.resetGame(rndmNumbers)
   }
 
   render() {
@@ -125,23 +109,32 @@ class Body extends Component {
       btnValues,
       inputValues,
       isDisabled,
+      isGameOver,
       moves,
-      isGameOver
-    } = this.state
+      secretNumber
+    } = this.props
+
+    if (!secretNumber) {
+      return (
+        <div className={ styles.container }>
+          <Loading />
+        </div>
+      )
+    }
 
     const lastMovement = moves[0] ? (
       <div>
         {LITERALS.LASTMOVEMENT}
         <div>
-          {`${LITERALS.COMBINATION}: `}
+          {LITERALS.COMBINATION}
           <span>{moves[0].combination}</span>
         </div>
         <div>
-          {`${LITERALS.CORRECTPOSITION}: `}
+          {LITERALS.CORRECTPOSITION}
           <span>{moves[0].correctPosition}</span>
         </div>
         <div>
-          {`${LITERALS.COINCIDENCE}: `}
+          {LITERALS.COINCIDENCE}
           <span>{moves[0].coincidence}</span>
         </div>
       </div>
@@ -160,7 +153,7 @@ class Body extends Component {
         <Button
           className={ styles.actionButton }
           isDisabled={ inputValues[inputValues.length - 1].text.length === 0 }
-          onClick={ isGameOver ? this.playAgain : this.checkAnswer }
+          onClick={ isGameOver ? this.resetGame : this.checkAnswer }
           text={ isGameOver ? LITERALS.PLAYAGAIN : LITERALS.CHECK }
         />
         {lastMovement}
@@ -172,4 +165,22 @@ class Body extends Component {
   }
 }
 
-export default Body
+const mapStateToProps = (state) => ({
+  btnValues: state.game.btnValues,
+  inputValues: state.game.inputValues,
+  isDisabled: state.game.isDisabled,
+  isGameOver: state.game.isGameOver,
+  moves: state.game.moves,
+  secretNumber: state.game.secretNumber,
+  error: state.game.error
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  onInitGame: () => dispatch(actions.initNewGame()),
+  setClickHandler: (params) => dispatch(actions.setClickHandler(params))
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Body)
